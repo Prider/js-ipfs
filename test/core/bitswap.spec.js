@@ -120,7 +120,7 @@ describe('bitswap', function () {
   })
 
   afterEach(function (done) {
-    this.timeout(80 * 2 * 1000)
+    this.timeout(160 * 1000)
     const tasks = nodes.map((node) => (cb) => node.stop(cb))
     parallel(tasks, (err) => {
       expect(err).to.not.exist()
@@ -131,7 +131,7 @@ describe('bitswap', function () {
 
   describe('transfer a block between', () => {
     it('2 peers', function (done) {
-      this.timeout(80 * 2 * 1000)
+      this.timeout(160 * 1000)
 
       let remoteNode
       let block
@@ -155,7 +155,7 @@ describe('bitswap', function () {
     })
 
     it('3 peers', function (done) {
-      this.timeout(80 * 3 * 1000)
+      this.timeout(240 * 1000)
 
       let blocks
       const remoteNodes = []
@@ -201,8 +201,9 @@ describe('bitswap', function () {
     })
   })
 
-  describe('transfer a file between', function ()  {
-    this.timeout(80 * 2 * 1000)
+  describe('transfer a file between', function () {
+    this.timeout(160 * 1000)
+    
     it('2 peers', (done) => {
       // TODO make this test more interesting (10Mb file)
       const file = Buffer.from(`I love IPFS <3 ${Math.random()}`)
